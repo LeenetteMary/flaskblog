@@ -8,7 +8,7 @@ from flask_login import login_user, current_user, logout_user, login_required   
 @app.route('/home')
 def home():
     posts = Post.query.all() 
-    return render_template('home.html', posts=posts)
+    return render_template('home.html', posts=posts) 
 
 @app.route('/about')
 def about():
@@ -76,6 +76,7 @@ def account():
         form.email.data = current_user.email
     image_file = url_for('static', filename='images/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
+
 # new posts
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
